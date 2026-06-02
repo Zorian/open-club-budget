@@ -58,14 +58,14 @@
     color:var(--ink-faint);font-weight:600;animation:rise .7s .18s ease both;
   }
 
-  .cards{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:start}
   .card{
     position:relative;background:var(--paper);border:1px solid var(--line);
     border-radius:18px;padding:32px 28px;display:flex;flex-direction:column;
     animation:rise .8s ease both;
   }
-  .card.rec{border-color:var(--accent);box-shadow:0 22px 50px -28px rgba(31,93,68,.5);animation-delay:.32s}
   .card.lean{animation-delay:.24s}
+  .card.rec{border-color:var(--accent);box-shadow:0 22px 50px -28px rgba(31,93,68,.5);animation-delay:.32s}
   .badge{
     position:absolute;top:-12px;left:28px;
     background:var(--accent);color:#fff;font-size:10.5px;font-weight:700;
@@ -117,7 +117,7 @@
 
   <div class="cards">
 
-    <!-- OPTION B -->
+    <!-- OPTION B (left) -->
     <div class="card lean">
       <div class="tier">Option B</div>
       <div class="price"><span class="num">£4,000</span> <span class="per">/ month</span></div>
@@ -129,7 +129,22 @@
       <div class="role">
         <div class="rname">Developer <span class="rtag">Ongoing</span></div>
         <div class="rdesc">Keeps the live app stable and compliant — bug fixes, App Store &amp; Play Store updates, performance, and rolling out new features as we grow.</div>
-        <!-- OPTION A -->
+      </div>
+      <div class="role">
+        <div class="rname">Social Media Manager <span class="rtag lite">Instagram only</span></div>
+        <div class="rdesc">Runs Instagram end to end — daily posting, community management, replies and performance tracking. TikTok comes in with Option A.</div>
+      </div>
+      <div class="role">
+        <div class="rname">Video Editor <span class="rtag lite">Part-time</span></div>
+        <div class="rdesc">A lighter run of short-form edits each week — enough to keep the channel active and posting, with fewer cuts overall.</div>
+      </div>
+      <div class="role">
+        <div class="rname">Content Designer <span class="rtag lite">Part-time</span></div>
+        <div class="rdesc">The essentials — key posts and ad creative to keep the feed looking sharp, at a lighter volume.</div>
+      </div>
+    </div>
+
+    <!-- OPTION A (right) -->
     <div class="card rec">
       <div class="badge">Recommended</div>
       <div class="tier">Option A</div>
@@ -154,21 +169,6 @@
       <div class="role">
         <div class="rname">Content Designer <span class="rtag">Full</span></div>
         <div class="rdesc">Carousels, static posts, ad creative and brand assets — a steady flow of on-brand design feeding both platforms every week.</div>
-      </div>
-    </div>
-
-  </div>
-      <div class="role">
-        <div class="rname">Social Media Manager <span class="rtag lite">Instagram only</span></div>
-        <div class="rdesc">Runs Instagram end to end — daily posting, community management, replies and performance tracking. TikTok comes in with Option A.</div>
-      </div>
-      <div class="role">
-        <div class="rname">Video Editor <span class="rtag lite">Part-time</span></div>
-        <div class="rdesc">A lighter run of short-form edits each week — enough to keep the channel active and posting, with fewer cuts overall.</div>
-      </div>
-      <div class="role">
-        <div class="rname">Content Designer <span class="rtag lite">Part-time</span></div>
-        <div class="rdesc">The essentials — key posts and ad creative to keep the feed looking sharp, at a lighter volume.</div>
       </div>
     </div>
 
