@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OpenClub — Phase 1 Budget</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,900&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f7f4ee;
+    --ink:#16140f;
+    --ink-soft:#4a463d;
+    --ink-faint:#8d887b;
+    --line:#ddd6c8;
+    --accent:#1f5d44;
+    --gold:#9a7b3f;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Hanken Grotesk',sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    background-image:radial-gradient(circle at 12% 8%, rgba(31,93,68,.04), transparent 40%),radial-gradient(circle at 88% 92%, rgba(154,123,63,.05), transparent 45%);
+    min-height:100vh;
+  }
+  .wrap{max-width:1040px;margin:0 auto;padding:clamp(28px,5vw,64px) clamp(20px,5vw,48px) 80px}
+
+  .eyebrow{
+    font-size:12px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--ink-faint);font-weight:600;
+    display:flex;gap:14px;align-items:center;flex-wrap:wrap;
+    animation:rise .7s ease both;
+  }
+  .eyebrow .dot{width:5px;height:5px;border-radius:50%;background:var(--accent)}
+  h1{
+    font-family:'Fraunces',serif;font-weight:500;
+    font-size:clamp(34px,6.2vw,64px);
+    line-height:1.03;letter-spacing:-.02em;
+    margin:22px 0 0;max-width:15ch;
+    animation:rise .7s .05s ease both;
+  }
+  h1 em{font-style:italic;color:var(--accent)}
+  .prepared{
+    margin-top:28px;font-size:13.5px;color:var(--ink-faint);
+    padding-top:18px;border-top:1px solid var(--line);
+    display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+    animation:rise .7s .12s ease both;
+  }
+  .prepared b{color:var(--ink);font-weight:600}
+
+  .sectionlabel{
+    margin:48px 0 20px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--ink-faint);font-weight:600;animation:rise .7s .18s ease both;
+  }
+
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .card{
+    position:relative;background:var(--paper);border:1px solid var(--line);
+    border-radius:18px;padding:32px 28px;display:flex;flex-direction:column;
+    animation:rise .8s ease both;
+  }
+  .card.rec{border-color:var(--accent);box-shadow:0 22px 50px -28px rgba(31,93,68,.5);animation-delay:.24s}
+  .card.lean{animation-delay:.32s}
+  .badge{
+    position:absolute;top:-12px;left:28px;
+    background:var(--accent);color:#fff;font-size:10.5px;font-weight:700;
+    letter-spacing:.14em;text-transform:uppercase;padding:6px 12px;border-radius:20px;
+  }
+  .tier{font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);font-weight:600}
+  .price{font-family:'Fraunces',serif;font-weight:500;letter-spacing:-.02em;margin-top:8px;line-height:1}
+  .price .num{font-size:clamp(38px,6.5vw,54px)}
+  .price .per{font-size:15px;color:var(--ink-faint);font-family:'Hanken Grotesk',sans-serif;font-weight:500;letter-spacing:0}
+  .cardname{font-family:'Fraunces',serif;font-size:20px;font-weight:500;margin-top:12px;color:var(--ink-soft)}
+
+  .divider{height:1px;background:var(--line);margin:24px 0 4px}
+  .grouphead{font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);font-weight:700;margin:18px 0 6px}
+
+  .role{padding:16px 0;border-bottom:1px dashed var(--line)}
+  .role:last-child{border-bottom:none}
+  .role .rname{font-family:'Fraunces',serif;font-size:17px;font-weight:500}
+  .role .rtag{display:inline-block;margin-left:8px;font-family:'Hanken Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);background:rgba(31,93,68,.09);padding:3px 8px;border-radius:6px;vertical-align:middle}
+  .role .rtag.lite{color:var(--gold);background:rgba(154,123,63,.1)}
+  .role .rdesc{margin-top:7px;font-size:14px;color:var(--ink-soft);line-height:1.5}
+
+  .closer{
+    margin-top:46px;background:var(--ink);color:var(--paper);border-radius:18px;
+    padding:clamp(26px,4vw,40px);animation:rise .8s .4s ease both;
+  }
+  .closer .big{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(20px,3.2vw,28px);line-height:1.25;letter-spacing:-.01em;max-width:32ch}
+  .closer .big em{font-style:italic;color:#8ecbac}
+  .closer p{margin-top:16px;color:#cfcabd;font-size:15px;max-width:60ch}
+  .closer p b{color:#fff;font-weight:600}
+
+  .sig{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);font-size:13px;color:var(--ink-faint)}
+  .sig b{color:var(--ink);font-weight:600}
+
+  @keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+  @media(max-width:780px){.cards{grid-template-columns:1fr}.badge{left:24px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="eyebrow"><span class="dot"></span> OpenClub · Phase 1 Budget · 2 Options</div>
+  <h1>Two options. What each one needs to <em>run.</em></h1>
+  <div class="prepared">
+    <span>Prepared for <b>Lawrence Artik</b> by <b>Jaydon Goldman</b></span>
+    <span>June 2026</span>
+  </div>
+
+  <div class="sectionlabel">— The two options</div>
+
+  <div class="cards">
+
+    <!-- OPTION A -->
+    <div class="card rec">
+      <div class="badge">Recommended</div>
+      <div class="tier">Option A</div>
+      <div class="price"><span class="num">£4,500</span> <span class="per">/ month</span></div>
+      <div class="cardname">The full team to run it properly</div>
+
+      <div class="divider"></div>
+      <div class="grouphead">What's needed to run it</div>
+
+      <div class="role">
+        <div class="rname">Developer <span class="rtag">Ongoing</span></div>
+        <div class="rdesc">Keeps the live app stable and compliant — bug fixes, App Store &amp; Play Store updates, performance, and rolling out new features as we grow.</div>
+      </div>
+      <div class="role">
+        <div class="rname">Social Media Manager <span class="rtag">Instagram + TikTok</span></div>
+        <div class="rdesc">Runs both platforms end to end — daily posting, community management, replies, trend-jacking and tracking what's working across the widest reach.</div>
+      </div>
+      <div class="role">
+        <div class="rname">Video Editor <span class="rtag">Full</span></div>
+        <div class="rdesc">Turns every shoot, activation and idea into a steady daily stream of Reels, TikToks and ad cuts — a full editing schedule, nothing left on the table.</div>
+      </div>
+      <div class="role">
+        <div class="rname">Content Designer <span class="rtag">Full</span></div>
+        <div class="rdesc">Carousels, static posts, ad creative and brand assets — a steady flow of on-brand design feeding both platforms every week.</div>
+      </div>
+    </div>
+
+    <!-- OPTION B -->
+    <div class="card lean">
+      <div class="tier">Option B</div>
+      <div class="price"><span class="num">£4,000</span> <span class="per">/ month</span></div>
+      <div class="cardname">The lean team to keep it running</div>
+
+      <div class="divider"></div>
+      <div class="grouphead">What's needed to run it</div>
+
+      <div class="role">
+        <div class="rname">Developer <span class="rtag">Ongoing</span></div>
+        <div class="rdesc">Keeps the live app stable and compliant — bug fixes, App Store &amp; Play Store updates, performance, and rolling out new features as we grow.</div>
+      </div>
+      <div class="role">
+        <div class="rname">Social Media Manager <span class="rtag lite">Instagram only</span></div>
+        <div class="rdesc">Runs Instagram end to end — daily posting, community management, replies and performance tracking. TikTok comes in with Option A.</div>
+      </div>
+      <div class="role">
+        <div class="rname">Video Editor <span class="rtag lite">Part-time</span></div>
+        <div class="rdesc">A lighter run of short-form edits each week — enough to keep the channel active and posting, with fewer cuts overall.</div>
+      </div>
+      <div class="role">
+        <div class="rname">Content Designer <span class="rtag lite">Part-time</span></div>
+        <div class="rdesc">The essentials — key posts and ad creative to keep the feed looking sharp, at a lighter volume.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="closer">
+    <div class="big">Same core team. The difference is <em>reach and output.</em></div>
+    <p>Option A runs <b>both Instagram and TikTok</b> with full video and design output — the most ground covered and the best shot at traction. Option B keeps it lean and <b>Instagram-focused</b>, with lighter video and design to protect runway. My honest steer is Option A: the production you're already funding — shoots, models, activations — only pays off if the team has the capacity to turn it into content. Either way, you get a real team and a clean number you can plan around.</p>
+  </div>
+
+  <div class="sig"><b>Jaydon Goldman</b> · Zita Network Ltd · OpenClub</div>
+
+</div>
+</body>
+</html>
